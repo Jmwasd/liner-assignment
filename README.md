@@ -1,11 +1,11 @@
 # liner-assignment
 
 1. users table
- - userId : 고유 번호
+ - userId : 유저 한 명이 가질 수 있는 고유 번호
 
 2. pages table 
  - user_userId : 관계설정 field
- - pageId : 고유 번호
+ - pageId : 페이지를 구분하기 위한 고유 번호
  - pageUrl : 페이지 URL
 
 3. texts table
