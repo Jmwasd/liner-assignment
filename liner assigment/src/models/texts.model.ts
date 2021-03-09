@@ -1,13 +1,9 @@
 import {Sequelize, Model, DataTypes} from 'sequelize';
-import { colors } from './colors.model';
 
 export class texts extends Model{
     public pages_pageId: number;
     public text : string;
     public highlightId : number;
-
-    public readonly createdAt !: Date;
-    public readonly updatedAt !: Date;
 }
 
 export default function (sequelize: Sequelize) : typeof texts {
@@ -24,6 +20,7 @@ export default function (sequelize: Sequelize) : typeof texts {
             },
         },
         {
+            timestamps : false,
             tableName: 'texts',
             sequelize,
         },

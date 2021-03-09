@@ -4,9 +4,6 @@ export class colors extends Model{
     public pages_highlightId: number;
     public colorHex : string;
     public theme : number;
-
-    public readonly createdAt !: Date;
-    public readonly updatedAt !: Date;
 }
 
 export default function (sequelize: Sequelize) : typeof colors {
@@ -23,6 +20,7 @@ export default function (sequelize: Sequelize) : typeof colors {
             },
         },
         {
+            timestamps : false,
             tableName: 'colors',
             sequelize,
         },

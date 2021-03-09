@@ -1,19 +1,18 @@
 import {Sequelize, Model, DataTypes} from 'sequelize';
-import { texts } from './texts.model';
 
 export class pages extends Model{
     public pageId: number;
     public users_userId : number;
     public pageUrl : string;
-
-    public readonly createdAt !: Date;
-    public readonly updatedAt !: Date;
 }
 
 export default function (sequelize: Sequelize) : typeof pages {
     pages.init(
         {
             pageId : {
+                allowNull: false,
+                autoIncrement: true,
+                primaryKey: true,
                 type : DataTypes.INTEGER
             },
             users_userId : {
@@ -24,6 +23,7 @@ export default function (sequelize: Sequelize) : typeof pages {
             },
         },
         {
+            timestamps : false,
             tableName: 'pages',
             sequelize,
         },

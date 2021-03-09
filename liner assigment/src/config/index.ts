@@ -4,9 +4,10 @@ const dbConfig = {
   development: {
     username: 'root',
     password: process.env.MARIADB_SECRET,
-    database: 'liner',
+    database: 'linerDB',
     host: 'localhost',
     dialect: 'mariadb',
+    timestamps : false
   },
   test: {
     username: 'root',
