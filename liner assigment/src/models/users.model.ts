@@ -1,23 +1,34 @@
 import { Sequelize, DataTypes, Model, Optional } from 'sequelize';
 
 export class users extends Model{
-  public userId : number;
+  public id : number;
+  public theme_id : number;
   public email: string;
   public password: string;
   public userName : string;
+
+  public createdAt : Date;
+  public updatedAt : Date;
 }
 
 export default function (sequelize: Sequelize): typeof users {
   users.init(
     {
-      userId : {
+      id : {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type : DataTypes.INTEGER
       },
+      theme_id : {
+        type : DataTypes.INTEGER,
+        defaultValue : 1
+      },
       email: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        validate : {
+          isEmail : true
+        }
       },
       password: {
         type: DataTypes.STRING
@@ -27,7 +38,6 @@ export default function (sequelize: Sequelize): typeof users {
       }
     },
     {
-      timestamps : false,
       tableName: 'users',
       sequelize,
     },

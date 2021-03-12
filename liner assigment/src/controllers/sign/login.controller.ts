@@ -1,6 +1,6 @@
 import DB from '../../database';
 import bcrypt from 'bcrypt';
-import {expressFn} from '../../types/common.interface';
+import {expressFn} from '../../types/common.types';
 import { sign } from 'jsonwebtoken'
 
 require('dotenv').config();
@@ -22,7 +22,7 @@ const login:expressFn = async(req, res)=>{
     if(checkPassword){
 
         const accessToken:string = sign({
-            userId : userInfo.userId,
+            userId : userInfo.id,
             userName : userInfo.userName,
             email : userInfo.email
         },accessKey, {
@@ -30,7 +30,7 @@ const login:expressFn = async(req, res)=>{
         });
 
         const refreshToken:string = sign({
-            userId : userInfo.userId,
+            userId : userInfo.id,
         },refreshKey, {
             expiresIn : '3h'
         });
@@ -42,7 +42,7 @@ const login:expressFn = async(req, res)=>{
         res.status(200)
         .cookie('accessToken', accessToken, {httpOnly : true, secure:true})
         .send({
-            userId : userInfo.userId,
+            userId : userInfo.id,
             userName : userInfo.userName,
             email : userInfo.email
         });

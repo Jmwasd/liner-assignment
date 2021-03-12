@@ -7,7 +7,7 @@ const dbConfig = {
     database: 'linerDB',
     host: 'localhost',
     dialect: 'mariadb',
-    timestamps : false
+    timestamps : true 
   },
   test: {
     username: 'root',
