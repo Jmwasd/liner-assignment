@@ -1,16 +1,17 @@
 import {Sequelize, Model, DataTypes} from 'sequelize';
 
-export class pages extends Model{
+export class themes extends Model{
     public id: number;
-    public userId : number;
-    public pageUrl : string;
+    public colorNumber : number;
+    public colorHex : string;
+    public themeId : number;
 
     public createdAt : Date;
     public updatedAt : Date;
 }
 
-export default function (sequelize: Sequelize) : typeof pages {
-    pages.init(
+export default function (sequelize: Sequelize) : typeof themes {
+    themes.init(
         {
             id : {
                 allowNull: false,
@@ -18,19 +19,21 @@ export default function (sequelize: Sequelize) : typeof pages {
                 primaryKey: true,
                 type : DataTypes.INTEGER
             },
-            userId : {
+            colorNumber : {
                 type : DataTypes.INTEGER
             },
-            pageUrl : {
-                type : DataTypes.STRING,
+            colorHex : {
+                type : DataTypes.STRING
+            },
+            themeId : {
+                type : DataTypes.INTEGER
             },
         },
         {
-            tableName: 'pages',
+            tableName: 'themes',
             sequelize,
         },
     )
 
-
-    return pages;
+    return themes;
 }

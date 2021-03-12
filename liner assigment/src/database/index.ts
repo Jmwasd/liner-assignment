@@ -1,8 +1,8 @@
 import Sequelize from 'sequelize';
 import config from '../config';
-import colors from '../models/colors.model';
+import themes from '../models/themes.model';
 import pages from '../models/pages.model';
-import texts from '../models/texts.model';
+import highlights from '../models/highlights.model';
 import users from '../models/users.model';
 
 const env = process.env.NODE_ENV || 'development';
@@ -11,43 +11,54 @@ const sequelize = new Sequelize.Sequelize(config[env].database, config[env].user
   dialect: config[env].dialect,
   pool: config[env].pool,
   logQueryParameters: env === 'development',
+  timezone : "+09:00",
   benchmark: true,
 });
 
 const DB = {
   users: users(sequelize),
   pages: pages(sequelize),
-  colors: colors(sequelize),
-  texts: texts(sequelize),
+  themes: themes(sequelize),
+  highlights: highlights(sequelize),
   sequelize, 
   Sequelize, 
 };
 
-//users : pages = 1 : N
-DB.users.hasMany(DB.pages,{
-  foreignKey : "users_userId"
-})
-
-DB.pages.belongsTo(DB.users,{
+//users : highlights = 1 : N
+DB.users.hasMany(DB.highlights,{
   foreignKey : "userId"
 })
 
-//pagges : texts = 1 : N
-DB.pages.hasMany(DB.texts, {
-  foreignKey : "pages_pageId"
+DB.highlights.belongsTo(DB.users, {
+  foreignKey : "userId"
 })
 
-DB.texts.belongsTo(DB.pages,{
-foreignKey : "pagesId"
-})
- 
-//texts : colors = 1 : N
-DB.texts.hasMany(DB.colors, {
-  foreignKey : "pages_highlightId"
+//pages : highlights = 1 : N
+DB.pages.hasMany(DB.highlights, {
+  foreignKey : "pageId"
 })
 
-DB.colors.belongsTo(DB.texts,{
-  foreignKey : "highlightId"
+DB.highlights.belongsTo(DB.pages,{
+  foreignKey : "pageId"
+})
+
+//users : pages = 1 : N
+
+DB.users.hasMany(DB.pages, {
+  foreignKey : "userId"
+})
+
+DB.pages.belongsTo(DB.users, {
+  foreignKey : "userId"
+})
+
+//users : themes = 1 : 1
+DB.users.hasOne(DB.themes,{
+  foreignKey : "themeId"
+})
+
+DB.themes.belongsTo(DB.users, {
+  foreignKey : "themeId"
 })
 
 

@@ -1,4 +1,4 @@
-import {expressFn} from '../../types/common.interface';
+import {expressFn} from '../../types/common.types';
 import bcrypt from 'bcrypt';
 import DB from '../../database';
 
