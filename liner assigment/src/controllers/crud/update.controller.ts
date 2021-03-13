@@ -1,7 +1,7 @@
 import DB from '../../database';
 import {Op} from 'sequelize'
 import {expressFn, highlightType, themeType} from '../../types/common.types';
-const {highlights, themes} = DB;
+const {highlights, themes, users} = DB;
 
 const update: expressFn = async(req, res)=>{
     const {themeId, highlightId, userId, colorHex, text} = req.body;
@@ -50,6 +50,11 @@ const update: expressFn = async(req, res)=>{
                     colorHex:result.colorHex
                 },{
                     where : {highlightId : data.highlightId}
+                })
+                users.update({
+                    themeId : themeId
+                },{
+                    where : {userId : userId}
                 })
             })
         })
