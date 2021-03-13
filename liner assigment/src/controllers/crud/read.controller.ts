@@ -19,7 +19,21 @@ const read: expressFn = async(req, res)=>{
         });
     }
 
-    if(pageId){
+    if(!pageId && !pageUrl){
+        const allUserInfo = await pages.findAll({
+            where : {userId : userId},
+            attributes : [["id","pageId"],"pageUrl"],
+            order : [['updatedAt', "ASC"]],
+            include : [
+                {
+                    model : highlights,
+                    order : [['updatedAt', "ASC"]],
+                    attributes : {exclude: ['createdAt','updatedAt']}
+                }
+            ]
+        })
+        res.send(allUserInfo);
+    } else if(pageId){
         readFn(pageId);
     }else if(!pageId){      
         const findPageId : pageType = await pages.findOne({
