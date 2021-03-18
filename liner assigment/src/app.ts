@@ -6,7 +6,6 @@ import { crud, sign } from './routes/index.route';
 import session from 'express-session';
 import morgan from 'morgan';
 import DB from './database'
-import { resign } from './controllers/sign/index.controller';
 
 require('dotenv').config();
 
@@ -73,8 +72,8 @@ app.get('/insertData', async (req, res)=>{
         {colorNumber : 3, colorHex : "#ffc477", themeId : 3},
     ])
     res.send(insertData);
-})
+});
 
 app.listen(app.get('port'), ()=> {
-    console.log('Success')
+    console.log(`server on ${app.get('port')}`);
 })

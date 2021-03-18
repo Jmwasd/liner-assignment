@@ -16,6 +16,8 @@ const resign: expressFn = async(req, res)=>{
     await pages.destroy({
         where : {userId : userId}
     })
+
+    res.send('200 OK')
 };
 
 export default resign;
