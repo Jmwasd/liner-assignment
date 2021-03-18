@@ -6,8 +6,8 @@ export class themes extends Model{
     public colorHex : string;
     public themeId : number;
 
-    public createdAt : Date;
-    public updatedAt : Date;
+    public readonly createdAt : Date;
+    public readonly updatedAt : Date;
 }
 
 export default function (sequelize: Sequelize) : typeof themes {

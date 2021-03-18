@@ -14,14 +14,16 @@ const dbConfig = {
     password: 'password',
     database: 'sequelize',
     host: 'localhost',
-    dialect: 'mysql',
+    dialect: 'mariadb',
+    timestamps : true 
   },
   production: {
-    username: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE,
-    host: process.env.MYSQL_HOST,
-    dialect: 'mysql',
+    username: process.env.MARIADB_USER,
+    password: process.env.MARIADB_PASSWORD,
+    database: process.env.MARIADB_DATABASE,
+    host: process.env.MARIADB_HOST,
+    dialect: 'mariadb',
+    timestamps : true 
   },
 };
 

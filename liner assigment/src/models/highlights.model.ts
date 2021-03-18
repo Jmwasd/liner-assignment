@@ -7,8 +7,8 @@ export class highlights extends Model{
     public pageId : number;
     public colorHex : string;
     
-    public createdAt : Date;
-    public updatedAt : Date;
+    public readonly createdAt : Date;
+    public readonly updatedAt : Date;
 }
 
 export default function (sequelize: Sequelize) : typeof highlights {
