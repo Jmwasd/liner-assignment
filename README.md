@@ -1,6 +1,5 @@
 # liner-assignment
 
-
 1.  users table
 - id : 기본 값(auto increase)
 - theme_id : 유저가 등록한 테마(기본 값은 1번 테마로 지정) 
@@ -31,6 +30,8 @@
 
 
 ![스크린샷 2021-03-13 오후 1 48 46](https://user-images.githubusercontent.com/66477332/111019483-dac3d400-8402-11eb-8d64-f95c42d10655.png)
+
+[깃북 링크](https://app.gitbook.com/@liner/s/linerapi/)
 
 InsertData
  - 과제에서 제시한 테마와 하이라이트 색을 DB에 넣어주는 API를 따로 설정했습니다.
