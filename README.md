@@ -18,7 +18,7 @@
 
  4. themes table
 - id : 기본 값(auto increase)
-- colorNumber :  해당 테마의 번호
+- colorNumber :  해당 테마의 하이라이트 번호
 - colorHex : 하이라이트
 - theme : 테마 번호
  
