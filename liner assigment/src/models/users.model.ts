@@ -7,8 +7,8 @@ export class users extends Model{
   public password: string;
   public userName : string;
 
-  public createdAt : Date;
-  public updatedAt : Date;
+  public readonly createdAt : Date;
+  public readonly updatedAt : Date;
 }
 
 export default function (sequelize: Sequelize): typeof users {

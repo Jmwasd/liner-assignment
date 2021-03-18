@@ -5,8 +5,8 @@ export class pages extends Model{
     public userId : number;
     public pageUrl : string;
 
-    public createdAt : Date;
-    public updatedAt : Date;
+    public readonly createdAt : Date;
+    public readonly updatedAt : Date;
 }
 
 export default function (sequelize: Sequelize) : typeof pages {
