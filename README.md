@@ -18,7 +18,7 @@
 - text : 코멘트
 
  4. themes table
-- Id : 기본 값(auto increase)
+- id : 기본 값(auto increase)
 - colorNumber :  해당 테마의 번호
 - colorHex : 하이라이트
 - theme : 테마 번호
@@ -32,11 +32,14 @@
 
 ![스크린샷 2021-03-13 오후 1 48 46](https://user-images.githubusercontent.com/66477332/111019483-dac3d400-8402-11eb-8d64-f95c42d10655.png)
 
+InsertData
+ - 과제에서 제시한 테마와 하이라이트 색을 DB에 넣어주는 API를 따로 설정했습니다.
+ 
 Create
 - Pages table에 등록된 url이 있는지 확인 후 highlights table에 입력 받은 정보를 저장했습니다.
 
 Read
-- 패이지 내 하이라이트 정보(3번 과제)와 유저가 하이라이트한 정보와 페이지(4번 과제)를 입력 받은 정보를 이용해 조건문으로 나눠 각각 출력값이 달라지게 구현했습니다.
+- 페이지 내 하이라이트 정보(3번 과제)와 유저가 하이라이트한 정보와 페이지(4번 과제)를 입력 받은 정보를 이용해 조건문으로 나눠 각각 출력값이 달라지게 구현했습니다.
 
 Update
 - 입력 값인 themeId를 이용해 출력값이 달라지게 구현했고, 함수를 만들어 코드를 간결하게 작성했습니다.
