@@ -5,6 +5,8 @@ import cookieParser from 'cookie-parser';
 import { crud, sign } from './routes/index.route';
 import session from 'express-session';
 import morgan from 'morgan';
+import DB from './database'
+import { resign } from './controllers/sign/index.controller';
 
 require('dotenv').config();
 
@@ -56,6 +58,22 @@ app.use(
 
 app.use('/crud', crud);
 app.use('/sign', sign);
+
+app.get('/insertData', async (req, res)=>{
+    const {themes} = DB
+    const insertData = await themes.bulkCreate([
+        {colorNumber : 1, colorHex : "#ffff8d", themeId : 1},
+        {colorNumber : 2, colorHex : "#a5f2e9", themeId : 1},
+        {colorNumber : 3, colorHex : "#ffd5c8", themeId : 1},
+        {colorNumber : 1, colorHex : "#f6f0aa", themeId : 2},
+        {colorNumber : 2, colorHex : "#d3edd1", themeId : 2},
+        {colorNumber : 3, colorHex : "#f9d6c1", themeId : 2},
+        {colorNumber : 1, colorHex : "#f4ff40", themeId : 3},
+        {colorNumber : 2, colorHex : "#8affd7", themeId : 3},
+        {colorNumber : 3, colorHex : "#ffc477", themeId : 3},
+    ])
+    res.send(insertData);
+})
 
 app.listen(app.get('port'), ()=> {
     console.log('Success')
